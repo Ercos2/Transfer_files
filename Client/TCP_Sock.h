@@ -11,5 +11,5 @@ public:
 
     void TCP_Sock_connect();
     void get_data(std::string file_name, int UDP_port);
-    bool put_ok();
+    bool put_ok(int timer);
 };

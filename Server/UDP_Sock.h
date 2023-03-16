@@ -10,6 +10,6 @@ class UDP_Sock {
     int file_size;
 public:
     UDP_Sock(std::string& ip_address, UDP_Struct* temp_UDP_struct, TCP_Sock* new_TCP_sock);
-
+    ~UDP_Sock();
     void get_data(std::string path);
 };

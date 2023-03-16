@@ -6,7 +6,7 @@ int main() {
     std::string ip_address;
     int TCP_port;
 
-    std::cin >> ip_address;
+    std::cin >> ip_address;                                     // тз не просило уточнять, что за значения задаются
     std::cin >> TCP_port;
     
     TCP_Sock TCP_sock(ip_address, TCP_port);
@@ -15,8 +15,8 @@ int main() {
     int UDP_port;
     int timer;
 
-    std::cin >> UDP_port;
-    std::cin >> file_name;
+    std::cin >> UDP_port;                                      // надеемся, что будут вводиться корректные значения
+    std::cin >> file_name;                                     // тз само путалось в порядке задаваемых значений
     std::cin >> timer;
 
     TCP_sock.get_data(file_name, UDP_port);
