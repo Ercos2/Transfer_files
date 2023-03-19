@@ -6,8 +6,8 @@ int main() {
     std::string ip_address;
     int TCP_port;
 
-    std::cin >> ip_address;                                     // тз не просило уточнять, что за значения задаются
-    std::cin >> TCP_port;
+    std::cin >> ip_address;                                     // порядок значений: ip, port, UDP-port, название файла, время ожидания ответа
+    std::cin >> TCP_port;                                       // тз не просило уточнять, что за значения задаются, поэтому я не уточнял запрашиваемое
     
     TCP_Sock TCP_sock(ip_address, TCP_port);
     TCP_sock.TCP_Sock_connect();

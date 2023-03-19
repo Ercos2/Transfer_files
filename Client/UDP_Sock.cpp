@@ -57,7 +57,7 @@ void UDP_Sock::put_data(std::string file_name, int timer) {                     
 
         if (file == NULL || file == 0) {
             std::cout << "Couldn't open the file." << std::endl;
-            strcpy(buffer, "NOFILE");
+            strcpy(buffer, "NOFILE");                                                                                           // сообщаем серверу, что файла не существует
             message_to_server(buffer_size, buffer, client, client_sizeof, file);
         }
 
@@ -78,12 +78,12 @@ void UDP_Sock::put_data(std::string file_name, int timer) {                     
             while (clock() - timer_time < timer) {
                 if (!TCP_sock->put_ok(timer)) {
                     part++;
-                    bytes_sent += reading_size;                                                                                 // я хотел вывод о процессе передачи
+                    bytes_sent += reading_size;                                                                                 // переменная для описания процесса передачи в выводе
                     break;
                 }
                 //std::cout << "Again " << clock() - timer_time << " < " << timer << "\n";                                      // контроль цикла
             }
-            //std::cout << "Sent " << part * 1024 << " bytes of " << file_size << " bytes." << "\n";                            // варианты вывода
+            //std::cout << "Sent " << part * 1024 << " bytes of " << file_size << " bytes." << "\n";                            // варианты вывода для контроля
             std::cout << "Sent " << bytes_sent << " bytes of " << file_size << " bytes." << "\n";
             //std::cout << "Sent " << (int)((double)bytes_sent / (double)file_size * 100) << "% of " << 100 << "%." << "\n";
             //std::cout << "Sent " << part << " parts of " << buffer_size << " bytes." << std::endl;

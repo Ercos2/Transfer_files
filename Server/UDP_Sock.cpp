@@ -40,18 +40,18 @@ void UDP_Sock::get_data(std::string path) {                                     
     std::vector<char> buffer_vec;                                                                                               // буфер для данных, потому что recvfrom работает странно
 
     while (true) {
-        received_size = recvfrom(client_socket, buffer, buffer_size, 0, (SOCKADDR*)&server, &server_sizeof);                    //запоминаем размер переданных данных
+        received_size = recvfrom(client_socket, buffer, buffer_size, 0, (SOCKADDR*)&server, &server_sizeof);                    // запоминаем размер переданных данных
         if (received_size == SOCKET_ERROR) {
             closesocket(client_socket);
             WSACleanup();
             exit(1);
         }
-        if (strcmp(buffer, "NOFILE") == 0) {
+        if (strcmp(buffer, "NOFILE") == 0) {                                                                                    // получаем сигнал, что файла не существует
             std::cout << "The file does not exist on the server." << "\n";
             remove(filename);
             break;
         }
-        else if (strcmp(buffer, "QUIT") == 0) {
+        else if (strcmp(buffer, "QUIT") == 0) {                                                                                 // получаем сигнал, что передача оончена
             std::cout << "Transmission ended by the server." << "\n";
             break;
         }

@@ -45,8 +45,8 @@ void TCP_Sock::get_data(std::string file_name, int UDP_port) {                  
         }
 
         const int buff_size = 16;
-        send(server_sock_listen, std::to_string(file_name.size()).c_str(), buff_size, 0);      //передаём размер названия, чтобы нормально его получить на сервере
-        send(server_sock_listen, std::to_string(file_size).c_str(), buff_size, 0);
+        send(server_sock_listen, std::to_string(file_name.size()).c_str(), buff_size, 0);       // передаём размер названия, чтобы нормально его получить на сервере
+        send(server_sock_listen, std::to_string(file_size).c_str(), buff_size, 0);              // передаём другие значения
         send(server_sock_listen, file_name.c_str(), file_name.size() + 10, 0);
         send(server_sock_listen, std::to_string(UDP_port).c_str(), buff_size, 0);
 
